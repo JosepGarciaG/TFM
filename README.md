@@ -1,4 +1,4 @@
-# TFM
+# TFM Ciència de Dades
 Associació entre l’expressió gènica i trets complexos, una aplicació pràctica per a malalties cerebrals
 
 Des de la seqüenciació del genoma humà s’han realitzat importants descobriments pel que fa a l’origen de malalties amb base genètica. GWAS (Genome-Wide association study) per exemple, ha identificat nombroses variacions genètiques per a diferents trets observables, tot i que el seu recorregut s’ha mostrat limitat quan les causes d’aquestes malalties tenen base poligènica, i en cap cas ens informa de les relacions causals i els mecanismes biològics que hi ha al darrere.
