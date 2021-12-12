@@ -1,0 +1,76 @@
+---
+title: "Exploració GTEx"
+
+output:
+  prettydoc::html_pretty:
+    theme: hpstr
+    highlight: github
+    toc: true
+    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning=FALSE, knitr.table.format = 'markdown')
+```
+
+
+```{r llibreries}
+
+invisible(utils::memory.limit(64000))
+
+library(data.table)
+library(dplyr)
+library(ggplot2)
+library(RColorBrewer)
+```
+
+
+```{r, warning=FALSE}
+
+# Lectura del fitxer de mostres, filtrem per teixits del cervell
+
+teixits <- data.table(fread('D:/TFM/GTEx_Analysis_v8_Annotations_SampleAttributesDS.txt'))
+teixitsBrain <- teixits[teixits$SMTS == 'Brain',]
+
+# Lectura fitxer de gens, filtrem mostres teixits del cervell
+
+dt_Brain <- data.table(fread('D:/TFM/GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_tpm.gct/GTEx_Analysis_2017-06-05_v8_RNASeQCv1.1.9_gene_tpm.gct', skip = 2, heade = TRUE, dec=".", select = c("Name", teixitsBrain$SAMPID)))
+
+```
+
+
+
+```{r, warning=FALSE}
+
+# Mapejat de mostres i teixits 
+
+data_t<-as.data.frame(t(dt_Brain[,-1]))
+colnames(data_t)<-dt_Brain$Name
+data_t<-tibble::rownames_to_column(data_t, "Name")
+data_t <- as.data.table(data_t)
+data_t <- data_t[-c(1),] 
+
+t_teixitsBrain <- teixitsBrain %>% dplyr::select(c("SAMPID","SMTSD"))
+setkey(t_teixitsBrain,SAMPID)
+setkey(data_t,Name)
+
+Result <- merge(t_teixitsBrain,data_t,by.x=c("SAMPID"),by.y=c("Name"), nomatch=0)
+
+# Obtenció dels 13 fitxers amb mostres i gens, un per cada teixit
+
+T_Amygdala <- Result[Result$SMTSD == 'Brain - Amygdala',]   
+T_Anterior <- Result[Result$SMTSD == 'Brain - Anterior cingulate cortex (BA24)',]   
+T_Caudate <- Result[Result$SMTSD == 'Brain - Caudate (basal ganglia)',] 
+T_Cerebellar <- Result[Result$SMTSD == 'Brain - Cerebellar Hemisphere',]    
+T_Cerebellum <- Result[Result$SMTSD == 'Brain - Cerebellum',]   
+T_Cortex <- Result[Result$SMTSD == 'Brain - Cortex',]   
+T_Frontal <- Result[Result$SMTSD == 'Brain - Frontal Cortex (BA9)',]    
+T_Hippocampus <- Result[Result$SMTSD == 'Brain - Hippocampus',] 
+T_Hypothalamus <- Result[Result$SMTSD == 'Brain - Hypothalamus',]   
+T_Nucleus <- Result[Result$SMTSD == 'Brain - Nucleus accumbens (basal ganglia)',]   
+T_Putamen <- Result[Result$SMTSD == 'Brain - Putamen (basal ganglia)',] 
+T_Spinal <- Result[Result$SMTSD == 'Brain - Spinal cord (cervical c-1)',]   
+T_Subtantia <- Result[Result$SMTSD == 'Brain - Substantia nigra',]  
+
+```
+
