@@ -58,19 +58,19 @@ Result <- merge(t_teixitsBrain,data_t,by.x=c("SAMPID"),by.y=c("Name"), nomatch=0
 
 # Obtenció dels 13 fitxers amb mostres i gens, un per cada teixit
 
-T_Amygdala <- Result[Result$SMTSD == 'Brain - Amygdala',]   
-T_Anterior <- Result[Result$SMTSD == 'Brain - Anterior cingulate cortex (BA24)',]   
-T_Caudate <- Result[Result$SMTSD == 'Brain - Caudate (basal ganglia)',] 
-T_Cerebellar <- Result[Result$SMTSD == 'Brain - Cerebellar Hemisphere',]    
-T_Cerebellum <- Result[Result$SMTSD == 'Brain - Cerebellum',]   
-T_Cortex <- Result[Result$SMTSD == 'Brain - Cortex',]   
-T_Frontal <- Result[Result$SMTSD == 'Brain - Frontal Cortex (BA9)',]    
-T_Hippocampus <- Result[Result$SMTSD == 'Brain - Hippocampus',] 
-T_Hypothalamus <- Result[Result$SMTSD == 'Brain - Hypothalamus',]   
-T_Nucleus <- Result[Result$SMTSD == 'Brain - Nucleus accumbens (basal ganglia)',]   
-T_Putamen <- Result[Result$SMTSD == 'Brain - Putamen (basal ganglia)',] 
-T_Spinal <- Result[Result$SMTSD == 'Brain - Spinal cord (cervical c-1)',]   
-T_Subtantia <- Result[Result$SMTSD == 'Brain - Substantia nigra',]  
+Amygdala <- Result[Result$SMTSD == 'Brain - Amygdala',]   
+Anterior <- Result[Result$SMTSD == 'Brain - Anterior cingulate cortex (BA24)',]   
+Caudate <- Result[Result$SMTSD == 'Brain - Caudate (basal ganglia)',] 
+Cerebellar <- Result[Result$SMTSD == 'Brain - Cerebellar Hemisphere',]    
+Cerebellum <- Result[Result$SMTSD == 'Brain - Cerebellum',]   
+Cortex <- Result[Result$SMTSD == 'Brain - Cortex',]   
+Frontal <- Result[Result$SMTSD == 'Brain - Frontal Cortex (BA9)',]    
+Hippocampus <- Result[Result$SMTSD == 'Brain - Hippocampus',] 
+Hypothalamus <- Result[Result$SMTSD == 'Brain - Hypothalamus',]   
+Nucleus <- Result[Result$SMTSD == 'Brain - Nucleus accumbens (basal ganglia)',]   
+Putamen <- Result[Result$SMTSD == 'Brain - Putamen (basal ganglia)',] 
+Spinal <- Result[Result$SMTSD == 'Brain - Spinal cord (cervical c-1)',]   
+Subtantia <- Result[Result$SMTSD == 'Brain - Substantia nigra',]  
 
 ```
 
